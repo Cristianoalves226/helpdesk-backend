@@ -3,7 +3,7 @@ package com.cristiano.helpdesk.domain.enums;
 import java.util.Iterator;
 
 public enum Status {
-	ABERTO(0,"ABERTO"), ANDAMENTO(1,"ANDAMENTO"),ENCERRADO(2,"ENCERRADO");
+	BAIXA(0,"BAIXA"), MEDIA(1,"MEDIA"),ALTA(2,"ALTA");
 	
 	private Integer codigo;
 	private String descricao;
@@ -28,6 +28,6 @@ public enum Status {
 				return x;
 			}
 		}
-		throw new IllegalArgumentException("Status Invalido");
+		throw new IllegalArgumentException("Prioridade Invalida");
 	}
 }

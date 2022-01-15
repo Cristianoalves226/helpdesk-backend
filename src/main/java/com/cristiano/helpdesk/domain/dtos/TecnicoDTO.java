@@ -28,6 +28,7 @@ public class TecnicoDTO implements Serializable{
 
 	public TecnicoDTO() {
 		super();
+		addPerfils(Perfil.CLIENTE);
 		// TODO Auto-generated constructor stub
 	}
 

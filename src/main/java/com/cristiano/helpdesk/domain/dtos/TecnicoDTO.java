@@ -6,23 +6,32 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.validation.constraints.NotNull;
+
 import com.cristiano.helpdesk.domain.Tecnico;
 import com.cristiano.helpdesk.domain.enums.Perfil;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-public class TecnicoDTO implements Serializable{
+public class TecnicoDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	protected Integer id;
+
+	@NotNull(message = "O campo NOME é requerido")
 	protected String nome;
-	
+
+	@NotNull(message = "O campo CPF é requerido")
 	protected String cpf;
+
+	@NotNull(message = "O campo EMAIL é requerido")
 	protected String email;
+
+	@NotNull(message = "O campo SENHA é requerido")
 	protected String senha;
-	
+
 	protected Set<Integer> perfils = new HashSet<>();
-	
+
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	protected LocalDate dataCriacao = LocalDate.now();
 
@@ -39,7 +48,7 @@ public class TecnicoDTO implements Serializable{
 		this.cpf = obj.getCpf();
 		this.email = obj.getEmail();
 		this.senha = obj.getSenha();
-		this.perfils = obj.getPerfils().stream().map(x->x.getCodigo()).collect(Collectors.toSet());
+		this.perfils = obj.getPerfils().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
 		this.dataCriacao = obj.getDataCriacao();
 	}
 
@@ -84,7 +93,7 @@ public class TecnicoDTO implements Serializable{
 	}
 
 	public Set<Perfil> getPerfils() {
-		return perfils.stream().map(x->Perfil.toEnum(x)).collect(Collectors.toSet());
+		return perfils.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
 	}
 
 	public void addPerfils(Perfil perfils) {
@@ -98,8 +107,5 @@ public class TecnicoDTO implements Serializable{
 	public void setDataCriacao(LocalDate dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
-	
-	
-	
-	
+
 }

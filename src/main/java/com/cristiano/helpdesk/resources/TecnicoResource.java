@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +29,7 @@ public class TecnicoResource {
 	private TecnicoService service;
 	
 	@GetMapping(value="/{id}")
-	public ResponseEntity<TecnicoDTO> findById(@PathVariable Integer id){
+	public ResponseEntity<TecnicoDTO> findById(@Valid @PathVariable Integer id){
 		Tecnico obj = this.service.findById(id);
 		
 		
@@ -43,7 +45,7 @@ public class TecnicoResource {
 		return ResponseEntity.ok().body(listDTO);
 	}
 	@PostMapping
-	public ResponseEntity<TecnicoDTO>  create(@RequestBody TecnicoDTO objDTO){
+	public ResponseEntity<TecnicoDTO>  create(@Valid @RequestBody TecnicoDTO objDTO){
 		Tecnico newObj = service.create(objDTO);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
 		return ResponseEntity.created(uri).build();

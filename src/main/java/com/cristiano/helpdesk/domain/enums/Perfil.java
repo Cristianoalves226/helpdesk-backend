@@ -1,7 +1,5 @@
 package com.cristiano.helpdesk.domain.enums;
 
-import java.util.Iterator;
-
 public enum Perfil {
 	ADMIN(0,"ROLE_ADMIN"), CLIENTE(1,"ROLE_CLIENTE"),TECNICO(2,"ROLE_TECNICO");
 	

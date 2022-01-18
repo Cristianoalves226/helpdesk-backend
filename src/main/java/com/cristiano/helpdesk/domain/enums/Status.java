@@ -1,7 +1,5 @@
 package com.cristiano.helpdesk.domain.enums;
 
-import java.util.Iterator;
-
 public enum Status {
 	ABERTO(0,"ABERTO"), ANDAMENTO(1,"ANDAMENTO"),ENCERRADO(2,"ENCERRADO");
 	

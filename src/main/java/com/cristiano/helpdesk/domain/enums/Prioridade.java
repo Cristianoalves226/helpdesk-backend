@@ -1,7 +1,5 @@
 package com.cristiano.helpdesk.domain.enums;
 
-import java.util.Iterator;
-
 public enum Prioridade {
 	BAIXA(0,"BAIXA"), MEDIA(1,"MEDIA"),ALTA(2,"ALTA");
 	

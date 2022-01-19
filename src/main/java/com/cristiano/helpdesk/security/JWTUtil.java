@@ -1,6 +1,5 @@
 package com.cristiano.helpdesk.security;
 
-import java.awt.Adjustable;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Value;

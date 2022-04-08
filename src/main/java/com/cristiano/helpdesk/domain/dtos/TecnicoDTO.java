@@ -53,6 +53,7 @@ public class TecnicoDTO implements Serializable {
 		this.senha = obj.getSenha();
 		this.perfils = obj.getPerfils().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
 		this.dataCriacao = obj.getDataCriacao();
+		addPerfils(Perfil.CLIENTE);
 	}
 
 	public Integer getId() {

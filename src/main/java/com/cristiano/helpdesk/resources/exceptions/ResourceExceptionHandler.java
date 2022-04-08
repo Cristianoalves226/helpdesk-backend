@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.cristiano.helpdesk.services.execptions.DataIntegrityViolationException;
-import com.cristiano.helpdesk.services.execptions.ObjetcNotFoundException;
+import com.cristiano.helpdesk.services.execptions.ObjectnotFoundException;
 
 @ControllerAdvice
 public class ResourceExceptionHandler {
 
-	@ExceptionHandler(ObjetcNotFoundException.class)
-	public ResponseEntity<StandardError> objectnotFoundException(ObjetcNotFoundException ex,HttpServletRequest request) {
+	@ExceptionHandler(ObjectnotFoundException.class)
+	public ResponseEntity<StandardError> objectnotFoundException(ObjectnotFoundException ex,HttpServletRequest request) {
 		
 		
 		StandardError error = new StandardError(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(),

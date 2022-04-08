@@ -13,7 +13,7 @@ import com.cristiano.helpdesk.domain.dtos.ClienteDTO;
 import com.cristiano.helpdesk.repositories.ClienteRepository;
 import com.cristiano.helpdesk.repositories.PessoaRepository;
 import com.cristiano.helpdesk.services.execptions.DataIntegrityViolationException;
-import com.cristiano.helpdesk.services.execptions.ObjetcNotFoundException;
+import com.cristiano.helpdesk.services.execptions.ObjectnotFoundException;
 
 @Service
 public class ClienteService {
@@ -27,7 +27,7 @@ public class ClienteService {
 
 	public Cliente findById(Integer id) {
 		Optional<Cliente> obj = repository.findById(id);
-		return obj.orElseThrow(() -> new ObjetcNotFoundException("Objeto não encontado Id" + id));
+		return obj.orElseThrow(() -> new ObjectnotFoundException("Objeto não encontado Id" + id));
 	}
 
 	public List<Cliente> findAll() {

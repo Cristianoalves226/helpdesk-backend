@@ -12,7 +12,7 @@ import com.cristiano.helpdesk.services.DBService;
 public class TestConfig {
 	
 	@Autowired
-	private DBService dbService; 
+	private DBService dbService;
 	
 	@Bean
 	public void instanciaDB() {

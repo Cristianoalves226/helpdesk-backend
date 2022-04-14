@@ -15,33 +15,26 @@ import com.cristiano.helpdesk.domain.enums.Perfil;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class ClienteDTO implements Serializable {
-
 	private static final long serialVersionUID = 1L;
 
 	protected Integer id;
-
 	@NotNull(message = "O campo NOME é requerido")
 	protected String nome;
-
-	@CPF
 	@NotNull(message = "O campo CPF é requerido")
+	@CPF
 	protected String cpf;
-
 	@NotNull(message = "O campo EMAIL é requerido")
 	protected String email;
-
 	@NotNull(message = "O campo SENHA é requerido")
 	protected String senha;
-
-	protected Set<Integer> perfils = new HashSet<>();
+	protected Set<Integer> perfis = new HashSet<>();
 
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	protected LocalDate dataCriacao = LocalDate.now();
 
 	public ClienteDTO() {
 		super();
-		addPerfils(Perfil.CLIENTE);
-		// TODO Auto-generated constructor stub
+		addPerfil(Perfil.CLIENTE);
 	}
 
 	public ClienteDTO(Cliente obj) {
@@ -51,8 +44,9 @@ public class ClienteDTO implements Serializable {
 		this.cpf = obj.getCpf();
 		this.email = obj.getEmail();
 		this.senha = obj.getSenha();
-		this.perfils = obj.getPerfils().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
+		this.perfis = obj.getPerfis().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
 		this.dataCriacao = obj.getDataCriacao();
+		addPerfil(Perfil.CLIENTE);
 	}
 
 	public Integer getId() {
@@ -95,12 +89,12 @@ public class ClienteDTO implements Serializable {
 		this.senha = senha;
 	}
 
-	public Set<Perfil> getPerfils() {
-		return perfils.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
+	public Set<Perfil> getPerfis() {
+		return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
 	}
 
-	public void addPerfils(Perfil perfils) {
-		this.perfils.add(perfils.getCodigo());
+	public void addPerfil(Perfil perfil) {
+		this.perfis.add(perfil.getCodigo());
 	}
 
 	public LocalDate getDataCriacao() {

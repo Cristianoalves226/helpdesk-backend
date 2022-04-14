@@ -19,13 +19,12 @@ import com.cristiano.helpdesk.repositories.PessoaRepository;
 public class DBService {
 
 	@Autowired
+	private ChamadoRepository chamadoRepository;
+	@Autowired
 	private PessoaRepository pessoaRepository;
 	@Autowired
-	ChamadoRepository chamadoRepository;
-	@Autowired
 	private BCryptPasswordEncoder encoder;
-	
-	
+
 	public void instanciaDB() {
 
 		Tecnico tec1 = new Tecnico(null, "Valdir Cezar", "550.482.150-95", "valdir@mail.com", encoder.encode("123"));
@@ -50,6 +49,5 @@ public class DBService {
 
 		pessoaRepository.saveAll(Arrays.asList(tec1, tec2, tec3, tec4, tec5, cli1, cli2, cli3, cli4, cli5));
 		chamadoRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5, c6));
-		
 	}
 }
